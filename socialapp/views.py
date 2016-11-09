@@ -1,5 +1,5 @@
-from django.http import HttpResponse
+from django.shortcuts import render
 
 
 def index(request):
-    return HttpResponse("<html><h1>HELLO WORLD</h1></html>")
+    return render(request, 'socialapp/index.html')
