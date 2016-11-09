@@ -5,5 +5,10 @@
 
   <body>
     <h1>Welcome to my social app</h1>
+    {% for status in status_list %}
+      <h2>{{ status.text }}</h2>
+      by {{ status.author }}
+      at {{ status.date_added }}
+    {% endfor %}
   </body>
 </html>
