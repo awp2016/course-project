@@ -5,6 +5,11 @@
 
   <body>
     <h1>Welcome to my social app</h1>
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <input type="submit" value="Save"/>
+    </form>
     {% for status in status_list %}
       <p>{{ status.text | slice:":15" }}...
           <a href="{% url 'status_details' status.pk %}">See more</a>
