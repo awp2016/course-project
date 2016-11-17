@@ -9,5 +9,17 @@
       <p>{{ status.date_added }}</p>
       <p>{{ status.text }}</p>
     </div>
+
+    <br>
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <input type="submit" value="Save"/>
+    </form>
+
+    <br>
+    {% for comment in comments %}
+      <p>{{ comment.text }} by {{ comment.author }} at {{ comment.date_added }}</p>
+    {% endfor %}
   </body>
 </html>
