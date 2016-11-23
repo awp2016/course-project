@@ -10,7 +10,7 @@ class Status(models.Model):
     author = models.ForeignKey(User)
 
     def __unicode__(self):
-        return '{} by {}'.format(self.text, self.author)
+        return '{} by {}'.format(self.text, self.author.get_full_name())
 
 
 class Comment(models.Model):
