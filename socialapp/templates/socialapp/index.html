@@ -5,6 +5,7 @@
 
   <body>
     <h1>Welcome to my social app</h1>
+    <a href="{% url 'logout' %}">Logout</a>
     <form method="post">
       {% csrf_token %}
       {{ form.as_p }}

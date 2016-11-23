@@ -7,3 +7,8 @@ class StatusForm(forms.Form):
 
 class CommentForm(forms.Form):
     text = forms.CharField(label="Comment", widget=forms.Textarea)
+
+
+class LoginForm(forms.Form):
+    username = forms.CharField(label="Username")
+    password = forms.CharField(label="Password", widget=forms.PasswordInput)
