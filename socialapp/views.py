@@ -57,9 +57,10 @@ def login_view(request):
         if form.is_valid():
             user = authenticate(username=form.cleaned_data['username'],
                                 password=form.cleaned_data['password'])
-            login(request=request,
-                  user=user)
-            return redirect('index')
+            if user:
+                login(request=request,
+                      user=user)
+                return redirect('index')
     context = {
         'form': form
     }
