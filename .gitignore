@@ -94,3 +94,6 @@ db.sqlite3
 
 # Editor files
 .idea/
+
+# User uploaded files
+images/

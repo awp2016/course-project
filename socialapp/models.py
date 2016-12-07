@@ -31,5 +31,5 @@ class UserProfile(models.Model):
     last_name = models.CharField(max_length=100)
     birthday = models.DateField(null=True)
     sex = models.CharField(max_length=1, choices=SEX_CHOICES, default=MALE)
-    avatar = models.ImageField(null=True)
+    avatar = models.ImageField(null=True, upload_to='images')
     user = models.OneToOneField(User, primary_key=True)
