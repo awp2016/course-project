@@ -1,6 +1,5 @@
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponse
 from django.shortcuts import redirect, render
 
 from . import models
@@ -85,3 +84,26 @@ def user_profile(request, pk):
         'user_profile': user_profile,
     }
     return render(request, 'socialapp/user_profile.html', context)
+
+
+def edit_user_profile(request, pk):
+    user_profile = models.UserProfile.objects.get(pk=pk)
+    form = forms.ProfileForm(initial={
+        'first_name': user_profile.first_name,
+        'last_name': user_profile.last_name
+    })
+    if request.method == 'POST':
+        form = forms.ProfileForm(request.POST)
+        if form.is_valid():
+            first_name = form.cleaned_data['first_name']
+            last_name = form.cleaned_data['last_name']
+            user_profile.first_name = first_name
+            user_profile.last_name = last_name
+            user_profile.save()
+            return redirect('user_profile', pk=pk)
+
+    context = {
+        'user_profile': user_profile,
+        'form': form,
+    }
+    return render(request, 'socialapp/edit_profile.html', context)
