@@ -5,7 +5,10 @@
   <body>
     <h1>Status details</h1>
     <div class="user-post">
-      <p>{{ status.author }}</p>
+      <p>
+        <a href="{% url 'user_profile' status.author.profile.pk %}">
+            {{ status.author }}</a>
+      <p>
       <p>{{ status.date_added }}</p>
       <p>{{ status.text }}</p>
     </div>
@@ -19,7 +22,10 @@
 
     <br>
     {% for comment in comments %}
-      <p>{{ comment.text }} by {{ comment.author }} at {{ comment.date_added }}</p>
+      <p>{{ comment.text }} by
+      <a href="{% url 'user_profile' comment.author.profile.pk %}">
+          {{ comment.author }}</a>
+      at {{ comment.date_added }}</p>
     {% endfor %}
   </body>
 </html>

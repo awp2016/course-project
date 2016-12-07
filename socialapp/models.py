@@ -32,4 +32,4 @@ class UserProfile(models.Model):
     birthday = models.DateField(null=True)
     sex = models.CharField(max_length=1, choices=SEX_CHOICES, default=MALE)
     avatar = models.ImageField(null=True, upload_to='images')
-    user = models.OneToOneField(User, primary_key=True)
+    user = models.OneToOneField(User, primary_key=True, related_name='profile')

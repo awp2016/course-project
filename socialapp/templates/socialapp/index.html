@@ -15,7 +15,7 @@
       <p>{{ status.text | slice:":15" }}...
           <a href="{% url 'status_details' status.pk %}">See more</a>
       </p>
-      by {{ status.author }}
+      by <a href="{% url 'user_profile' status.author.profile.pk %}">{{ status.author }}</a>
       at {{ status.date_added }}
     {% endfor %}
   </body>
