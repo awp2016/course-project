@@ -1,5 +1,6 @@
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse
 from django.shortcuts import redirect, render
 
 from . import models
@@ -29,7 +30,11 @@ def index(request):
 @login_required
 def status_details(request, pk):
     status = models.Status.objects.get(pk=pk)
-    comments = models.Comment.objects.filter(status=status).order_by('-date_added')
+    comments = (
+        models.Comment.objects
+        .filter(status=status)
+        .order_by('-date_added')
+    )
     if request.method == 'GET':
         form = forms.CommentForm()
     elif request.method == 'POST':
@@ -71,3 +76,12 @@ def logout_view(request):
     if request.method == 'GET':
         logout(request)
         return redirect('login')
+
+
+def user_profile(request, pk):
+    if request.method == 'GET':
+        user_profile = models.UserProfile.objects.get(pk=pk)
+    context = {
+        'user_profile': user_profile,
+    }
+    return render(request, 'socialapp/user_profile.html', context)
