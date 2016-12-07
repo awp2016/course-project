@@ -6,6 +6,7 @@
   <body>
     <h1>Welcome to my social app</h1>
     <a href="{% url 'logout' %}">Logout</a>
+    <a href="{% url 'user_profile' user.profile.pk %}">My profile</a>
     <form method="post">
       {% csrf_token %}
       {{ form.as_p }}
