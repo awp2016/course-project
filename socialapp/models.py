@@ -18,3 +18,18 @@ class Comment(models.Model):
     date_added = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(User)
     status = models.ForeignKey(Status)
+
+
+class UserProfile(models.Model):
+    MALE = 'M'
+    FEMALE = 'F'
+    SEX_CHOICES = (
+        (MALE, 'M'),
+        (FEMALE, 'F'),
+    )
+    first_name = models.CharField(max_length=100)
+    last_name = models.CharField(max_length=100)
+    birthday = models.DateField(null=True)
+    sex = models.CharField(max_length=1, choices=SEX_CHOICES, default=MALE)
+    avatar = models.ImageField(null=True)
+    user = models.OneToOneField(User, primary_key=True)
