@@ -40,10 +40,10 @@ Project installation
   source sandbox/bin/activate
   ```
 
-4. Install Django inside virtual environment:
+4. Install requirements inside virtual environment:
 
   ```
-  pip install Django
+  pip install -r requirements.txt
   ```
 
 5. Apply migrations:
