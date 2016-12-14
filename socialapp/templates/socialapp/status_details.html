@@ -1,34 +1,41 @@
-<html>
-  <head>
-    <title>My social network</title>
-  </head>
-  <body>
-    <h1>Status details</h1>
-    <div class="user-post">
-      <p>
-        <a href="{% url 'user_profile' status.author.profile.pk %}">
-            {{ status.author }}</a>
-      <p>
-      <p>{{ status.date_added }}</p>
-      <p>{{ status.text }}</p>
+{% extends 'socialapp/layout.html' %}
 
+{% block head %}
+  <h1>Status details</h1>
+{% endblock %}
+
+{% block content %}
+
+  <div class="user-post">
+    <h3>{{ status.text }}</h3>
+
+    <small>
+      by <a href="{% url 'user_profile' status.author.profile.pk %}">
+         {{ status.author }}</a>
+      on {{ status.date_added }}
+    </small>
+
+    <p>
       <a href="{% url 'update_status' status.pk %}">Edit</a>
       <a href="{% url 'delete_status' status.pk %}">Delete</a>
-    </div>
+    </p>
+  </div>
 
-    <br>
-    <form method="post">
-      {% csrf_token %}
-      {{ form.as_p }}
-      <input type="submit" value="Save"/>
-    </form>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Save"/>
+  </form>
 
-    <br>
-    {% for comment in comments %}
-      <p>{{ comment.text }} by
-      <a href="{% url 'user_profile' comment.author.profile.pk %}">
-          {{ comment.author }}</a>
-      at {{ comment.date_added }}</p>
-    {% endfor %}
-  </body>
-</html>
+  {% for comment in comments %}
+    <p>
+      {{ comment.text }}
+      <small>
+        by
+        <a href="{% url 'user_profile' comment.author.profile.pk %}">
+           {{ comment.author }}</a>
+        at {{ comment.date_added }}
+      </small>
+    </p>
+  {% endfor %}
+{% endblock %}

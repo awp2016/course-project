@@ -1,23 +1,24 @@
-<html>
-  <head>
-    <title>My social network</title>
-  </head>
+{% extends 'socialapp/layout.html' %}
 
-  <body>
-    <h1>Welcome to my social app</h1>
-    <a href="{% url 'logout' %}">Logout</a>
-    <a href="{% url 'user_profile' user.profile.pk %}">My profile</a>
-    <form method="post">
-      {% csrf_token %}
-      {{ form.as_p }}
-      <input type="submit" value="Save"/>
-    </form>
-    {% for status in status_list %}
-      <p>{{ status.text | slice:":15" }}...
-          <a href="{% url 'status_details' status.pk %}">See more</a>
-      </p>
-      by <a href="{% url 'user_profile' status.author.profile.pk %}">{{ status.author }}</a>
-      at {{ status.date_added }}
-    {% endfor %}
-  </body>
-</html>
+{% block content %}
+
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Save"/>
+  </form>
+
+  {% for status in status_list %}
+    <p>{{ status.text | slice:":15" }}...
+        <a href="{% url 'status_details' status.pk %}">See more</a>
+    </p>
+
+    <small>
+      by <a href="{% url 'user_profile' status.author.profile.pk %}">
+          {{ status.author }}</a>
+      on {{ status.date_added }}
+    </small>
+
+    <hr>
+  {% endfor %}
+{% endblock %}

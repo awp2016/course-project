@@ -1,13 +1,16 @@
-<html>
-  <head>
-    <title>My social network</title>
-  </head>
-  <body>
-    <h1>User profile</h1>
-    <p>First name: {{ user_profile.first_name }}</p>
-    <p>Last name: {{ user_profile.last_name }}</p>
-    <p>Birthday: {{ user_profile.birthday }}</p>
-    <p>Sex: {{ user_profile.sex }}</p>
-    <p>Avatar: <img width="50" src="{{ user_profile.avatar.url }}"/></p>
-  </body>
-</html>
+{% extends 'socialapp/layout.html' %}
+
+{% block head %}
+  <h1>User profile</h1>
+{% endblock %}
+
+{% block content %}
+  <p>
+    First name: <b>{{ user_profile.first_name }}</b> <br>
+    Last name: <b>{{ user_profile.last_name }}</b> <br>
+    Birthday: <b>{{ user_profile.birthday }}</b> <br>
+    Sex: <b>{{ user_profile.sex }}</b> <br>
+    Avatar: <img width="50" src="{{ user_profile.avatar.url }}"/>
+  </p>
+  <a href="{% url 'edit_user_profile' user_profile.pk %}">Edit</a>
+{% endblock %}

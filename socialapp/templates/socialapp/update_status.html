@@ -1,14 +1,13 @@
-<html>
-  <head>
-    <title>My social network</title>
-  </head>
+{% extends 'socialapp/layout.html' %}
 
-  <body>
-    <h1>Edit status</h1>
-    <form method="post">
-      {% csrf_token %}
-      {{ form.as_p }}
-      <input type="submit" value="Save"/>
-    </form>
-  </body>
-</html>
+{% block head %}
+  <h1>Edit status</h1>
+{% endblock %}
+
+{% block content %}
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Save"/>
+  </form>
+{% endblock %}
