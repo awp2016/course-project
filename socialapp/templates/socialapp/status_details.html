@@ -13,6 +13,7 @@
       <p>{{ status.text }}</p>
 
       <a href="{% url 'update_status' status.pk %}">Edit</a>
+      <a href="{% url 'delete_status' status.pk %}">Delete</a>
     </div>
 
     <br>

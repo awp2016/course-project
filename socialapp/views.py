@@ -2,7 +2,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect, render
-from django.views.generic.edit import UpdateView
+from django.urls import reverse
+from django.views.generic.edit import DeleteView, UpdateView
 from django.views.generic.list import ListView
 
 from . import models
@@ -35,6 +36,14 @@ class StatusUpdate(LoginRequiredMixin, UpdateView):
     model = models.Status
     fields = ['text']
     template_name = 'socialapp/update_status.html'
+
+
+class StatusDelete(LoginRequiredMixin, DeleteView):
+    model = models.Status
+    template_name = 'socialapp/delete_status.html'
+
+    def get_success_url(self):
+        return reverse('index')
 
 
 @login_required

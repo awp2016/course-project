@@ -15,4 +15,6 @@ urlpatterns = [
         name="edit_user_profile"),
     url(r'^status/(?P<pk>\d+)/edit/$', views.StatusUpdate.as_view(),
         name='update_status'),
+    url(r'^status/(?P<pk>\d+)/delete/$', views.StatusDelete.as_view(),
+        name='delete_status'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
