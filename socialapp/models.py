@@ -1,7 +1,8 @@
 from __future__ import unicode_literals
 
-from django.db import models
 from django.contrib.auth.models import User
+from django.db import models
+from django.urls import reverse
 
 
 class Status(models.Model):
@@ -11,6 +12,10 @@ class Status(models.Model):
 
     def __unicode__(self):
         return '{} by {}'.format(self.text, self.author.get_full_name())
+
+    def get_absolute_url(self):
+        return reverse('status_details',
+                       kwargs={'pk': self.pk})
 
 
 class Comment(models.Model):

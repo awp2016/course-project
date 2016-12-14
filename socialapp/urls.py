@@ -13,4 +13,6 @@ urlpatterns = [
         name="user_profile"),
     url(r'^user-profile/(?P<pk>\d+)/edit/$', views.edit_user_profile,
         name="edit_user_profile"),
+    url(r'^status/(?P<pk>\d+)/edit/$', views.StatusUpdate.as_view(),
+        name='update_status'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -11,6 +11,8 @@
       <p>
       <p>{{ status.date_added }}</p>
       <p>{{ status.text }}</p>
+
+      <a href="{% url 'update_status' status.pk %}">Edit</a>
     </div>
 
     <br>

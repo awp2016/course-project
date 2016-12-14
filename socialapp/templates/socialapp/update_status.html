@@ -1,0 +1,14 @@
+<html>
+  <head>
+    <title>My social network</title>
+  </head>
+
+  <body>
+    <h1>Edit status</h1>
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <input type="submit" value="Save"/>
+    </form>
+  </body>
+</html>

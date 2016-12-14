@@ -2,6 +2,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect, render
+from django.views.generic.edit import UpdateView
 from django.views.generic.list import ListView
 
 from . import models
@@ -28,6 +29,12 @@ class StatusListView(LoginRequiredMixin, ListView):
                                 author=request.user)
             status.save()
             return redirect('index')
+
+
+class StatusUpdate(LoginRequiredMixin, UpdateView):
+    model = models.Status
+    fields = ['text']
+    template_name = 'socialapp/update_status.html'
 
 
 @login_required
