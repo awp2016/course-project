@@ -1,29 +1,33 @@
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect, render
+from django.views.generic.list import ListView
 
 from . import models
 from . import forms
 
 
-@login_required
-def index(request):
-    status_list = models.Status.objects.order_by('-date_added')
-    if request.method == 'GET':
-        form = forms.StatusForm()
-    elif request.method == 'POST':
-        form = forms.StatusForm(request.POST)
+class StatusListView(LoginRequiredMixin, ListView):
+    model = models.Status
+    form_class = forms.StatusForm
+    template_name = 'socialapp/index.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(StatusListView, self).get_context_data(**kwargs)
+        context['form'] = self.form_class()
+        return context
+
+    def get_queryset(self):
+        return self.model.objects.order_by('-date_added')
+
+    def post(self, request):
+        form = self.form_class(request.POST)
         if form.is_valid():
-            status = models.Status(text=form.cleaned_data['text'],
-                                   author=request.user)
+            status = self.model(text=form.cleaned_data['text'],
+                                author=request.user)
             status.save()
             return redirect('index')
-
-    context = {
-        'status_list': status_list,
-        'form': form,
-    }
-    return render(request, 'socialapp/index.html', context)
 
 
 @login_required

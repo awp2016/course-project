@@ -5,7 +5,7 @@ from django.conf import settings
 from . import views
 
 urlpatterns = [
-    url(r'^$', views.index, name='index'),
+    url(r'^$', views.StatusListView.as_view(), name='index'),
     url(r'^status/(?P<pk>\d+)/$', views.status_details, name='status_details'),
     url(r'^login', views.login_view, name="login"),
     url(r'^logout/$', views.logout_view, name="logout"),
