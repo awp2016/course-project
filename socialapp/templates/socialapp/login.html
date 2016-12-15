@@ -2,13 +2,17 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+   {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
   <title>Login</title>
 </head>
 <body>
-  <form method="POST">
+<div class="login-page">
+  <form class="login-form" method="POST">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Login</button>
+    <button class="button" type="submit">Login</button>
   </form>
+</div>
 </body>
 </html>

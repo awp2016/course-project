@@ -1,9 +1,8 @@
 body {
     font-family: 'Roboto', sans-serif;
-    color: 333333;
     background: white;
+    margin: 0;
 }
-
 
 .see-more {
     float: right;
@@ -19,10 +18,12 @@ small {
     font-size: 11px;
 }
 
+
 /*text-decoration:none removes the underline from the links*/
+
 a {
     text-decoration: none;
-    color: #004dc7;
+    color: #177E89;
 }
 
 textarea {
@@ -31,37 +32,53 @@ textarea {
     border-color: #3581B8;
 }
 
-a:visited {
-    color: #002e77;
-}
 
-  /*moved user details to the right size of page; */
+/*moved user details to the right size of page; */
+
 .user {
-	font-size: smaller;
-	float: right;
-	margin: 10px;
+    font-size: smaller;
+    float: right;
+    margin: 10px;
 }
 
-  /*moved the title to the left side, otherwise, it's containing box would take the whole row and the user div would go underneath it*/
+
+/*moved the title to the left side, otherwise, it's containing box would take the whole row and the user div would go underneath it*/
+
 h1 {
     color: #3581B8;
     float: left;
 }
 
-  /*needed to resset the flow of the page after using float on both elements above it*/
+
+/*needed to resset the flow of the page after using float on both elements above it*/
+
 form {
-	clear: both;
+    clear: both;
 }
 
 
-  /*defines an area that contains the posts.It wraps the posts so they can stay in a line as long as there is space and go on the next row if there is no more space on the apge */
+/*same as above, for status page*/
+
+.user-post {
+    clear: both;
+}
+
+.user-details {
+    clear: both;
+}
+
+
+/*defines an area that contains the posts.It wraps the posts so they can stay in a line as long as there is space and go on the next row if there is no more space on the apge */
+
 .index-posts-area {
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
 }
 
-  /*the padding rule works like an inside margin, this way we can create some spacing between the content and the border of the divs and still have the same background inside this space*/
+
+/*the padding rule works like an inside margin, this way we can create some spacing between the content and the border of the divs and still have the same background inside this space*/
+
 .index-post {
     padding: 10px;
     margin-right: 10px;
@@ -73,38 +90,87 @@ form {
     color: white;
 }
 
-  /*the color rule is applied to two elements, the <a href tag that is contained in the div with the class index-post and the <a href tag that is contained within the <small> tag*/
-.index-post a,
-small a {
+.index-post a {
     color: #eee;
 }
 
-  /*this div contains the whole page and it sets it's with to 85% of it's parent div, in our case, the parent div is the body, and it has the same width as the windw.*/
- /*margin-left: auto and margin-right: auto centers my div. This rule doesn't work in all cases, so it's not a standard way to center everything.*/
+
+/*this div contains the whole page and it sets it's with to 85% of it's parent div, in our case, the parent div is the body, and it has the same width as the windw.*/
+
+
+/*margin-left: auto and margin-right: auto centers my div. This rule doesn't work in all cases, so it's not a standard way to center everything.*/
+
 .page-container {
-     width: 85%;
+    width: 85%;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
     padding: 20px;
-    background: #f9f9f9;
     border-radius: 28px;
-    transform: translateY(18%);
     box-shadow: 0px 0px 7px #aaa;
 }
 
 
+/*this rule makes the button looks cooler. Border-radius adds rounded corners */
 
- /*this rule makes the button looks cooler. Border-radius adds rounded corners */
 .button {
-	background-color: #3581B8;
-	border-radius: 6px;
-	border: 1px solid transparent;
-	padding: 4px 10px;
-	color: white;
-	box-shadow: 1px 1px 1px #aaa;
+    background-color: #3581B8;
+    border-radius: 6px;
+    border: 1px solid transparent;
+    padding: 6px 12px;
+    color: white;
+    box-shadow: 1px 1px 1px #aaa;
 }
 
 
-.user-post {
-	    clear: both;
+/*display:block takes 100% of the available space*/
+
+.user-details span {
+    display: block;
+    margin-bottom: 12px;
+}
+
+.user-image {
+    max-width: 150px;
+}
+
+.user-image img {
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #eee;
+    border-radius: 6px;
+}
+
+
+/*input looks cooler, just like the buttons*/
+
+input {
+    border-radius: 6px;
+    font-size: 14px;
+    border: 1px solid #3581B8;
+    box-shadow: 1px 1px 3px #aaa;
+    padding: 6px;
+    margin-top: 5px;
+}
+
+.button {
+    cursor: pointer;
+}
+
+.login-page {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-form {
+    padding: 30px 70px;
+    box-shadow: 0px 0px 12px #ddd;
+    border-radius: 10px;
+    border: 1px solid #3581B8;
 }

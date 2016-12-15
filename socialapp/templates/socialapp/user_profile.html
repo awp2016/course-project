@@ -5,12 +5,12 @@
 {% endblock %}
 
 {% block content %}
-  <p>
-    First name: <b>{{ user_profile.first_name }}</b> <br>
-    Last name: <b>{{ user_profile.last_name }}</b> <br>
-    Birthday: <b>{{ user_profile.birthday }}</b> <br>
-    Sex: <b>{{ user_profile.sex }}</b> <br>
-    Avatar: <img width="50" src="{{ user_profile.avatar.url }}"/>
-  </p>
-  <a href="{% url 'edit_user_profile' user_profile.pk %}">Edit</a>
+  <div class="user-details">
+      <span class="user-image"> Avatar: <img src="{{ user_profile.avatar.url }}"/> </span>
+    <span> First name: <b>{{ user_profile.first_name }}</b> </span>
+    <span> Last name: <b>{{ user_profile.last_name }}</b> </span>
+    <span> Birthday: <b>{{ user_profile.birthday }}</b> <br> </span>
+    <span> Sex: <b>{{ user_profile.sex }}</b> </span>
+  </div>
+  <a class="button" href="{% url 'edit_user_profile' user_profile.pk %}">Edit</a>
 {% endblock %}
