@@ -5,12 +5,14 @@
   <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <input type="submit" value="Save"/>
+    <input type="submit" class="button" type="submit" value="Save"/>
   </form>
 
+<div class="index-posts-area">
   {% for status in status_list %}
+  <div class="index-post">
     <p>{{ status.text | slice:":15" }}...
-        <a href="{% url 'status_details' status.pk %}">See more</a>
+        <a class="see-more" href="{% url 'status_details' status.pk %}">See more</a>
     </p>
 
     <small>
@@ -18,7 +20,9 @@
           {{ status.author }}</a>
       on {{ status.date_added }}
     </small>
+  </div>
 
-    <hr>
   {% endfor %}
+</div>
+
 {% endblock %}

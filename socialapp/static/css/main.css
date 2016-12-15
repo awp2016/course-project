@@ -1,0 +1,110 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    color: 333333;
+    background: white;
+}
+
+
+.see-more {
+    float: right;
+}
+
+label {
+    font-weight: 600;
+    display: block;
+    color: #3581B8;
+}
+
+small {
+    font-size: 11px;
+}
+
+/*text-decoration:none removes the underline from the links*/
+a {
+    text-decoration: none;
+    color: #004dc7;
+}
+
+textarea {
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px #dcdcdc;
+    border-color: #3581B8;
+}
+
+a:visited {
+    color: #002e77;
+}
+
+  /*moved user details to the right size of page; */
+.user {
+	font-size: smaller;
+	float: right;
+	margin: 10px;
+}
+
+  /*moved the title to the left side, otherwise, it's containing box would take the whole row and the user div would go underneath it*/
+h1 {
+    color: #3581B8;
+    float: left;
+}
+
+  /*needed to resset the flow of the page after using float on both elements above it*/
+form {
+	clear: both;
+}
+
+
+  /*defines an area that contains the posts.It wraps the posts so they can stay in a line as long as there is space and go on the next row if there is no more space on the apge */
+.index-posts-area {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+  /*the padding rule works like an inside margin, this way we can create some spacing between the content and the border of the divs and still have the same background inside this space*/
+.index-post {
+    padding: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    width: 300px;
+    box-shadow: 2px 2px 5px #dcdcdc;
+    background: #3581B8;
+    color: white;
+}
+
+  /*the color rule is applied to two elements, the <a href tag that is contained in the div with the class index-post and the <a href tag that is contained within the <small> tag*/
+.index-post a,
+small a {
+    color: #eee;
+}
+
+  /*this div contains the whole page and it sets it's with to 85% of it's parent div, in our case, the parent div is the body, and it has the same width as the windw.*/
+ /*margin-left: auto and margin-right: auto centers my div. This rule doesn't work in all cases, so it's not a standard way to center everything.*/
+.page-container {
+     width: 85%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 28px;
+    transform: translateY(18%);
+    box-shadow: 0px 0px 7px #aaa;
+}
+
+
+
+ /*this rule makes the button looks cooler. Border-radius adds rounded corners */
+.button {
+	background-color: #3581B8;
+	border-radius: 6px;
+	border: 1px solid transparent;
+	padding: 4px 10px;
+	color: white;
+	box-shadow: 1px 1px 1px #aaa;
+}
+
+
+.user-post {
+	    clear: both;
+}
