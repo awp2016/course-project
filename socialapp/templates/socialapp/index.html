@@ -16,8 +16,13 @@
     </p>
 
     <small>
-      by <a href="{% url 'user_profile' status.author.profile.pk %}">
+      by
+      {% if user.profile %}
+        <a href="{% url 'user_profile' status.author.profile.pk %}">
           {{ status.author }}</a>
+      {% else %}
+          {{ status.author }}
+      {% endif %}
       on {{ status.date_added }}
     </small>
   </div>

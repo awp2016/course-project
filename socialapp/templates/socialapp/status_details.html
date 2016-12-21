@@ -10,8 +10,13 @@
     <h3>{{ status.text }}</h3>
 
     <small>
-      by <a href="{% url 'user_profile' status.author.profile.pk %}">
-         {{ status.author }}</a>
+      by
+      {% if user.profile %}
+        <a href="{% url 'user_profile' status.author.profile.pk %}">
+          {{ status.author }}</a>
+      {% else %}
+          {{ status.author }}
+      {% endif %}
       on {{ status.date_added }}
     </small>
 
@@ -32,8 +37,12 @@
       {{ comment.text }}
       <small>
         by
-        <a href="{% url 'user_profile' comment.author.profile.pk %}">
-           {{ comment.author }}</a>
+        {% if user.profile %}
+          <a href="{% url 'user_profile' comment.author.profile.pk %}">
+            {{ comment.author }}</a>
+        {% else %}
+            {{ comment.author }}
+        {% endif %}
         at {{ comment.date_added }}
       </small>
     </p>
