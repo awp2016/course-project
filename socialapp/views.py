@@ -74,6 +74,7 @@ def status_details(request, pk):
 
 
 def login_view(request):
+    context = {}
     if request.method == 'GET':
         form = forms.LoginForm()
     elif request.method == 'POST':
@@ -85,9 +86,9 @@ def login_view(request):
                 login(request=request,
                       user=user)
                 return redirect('index')
-    context = {
-        'form': form
-    }
+            else:
+                context['error_message'] = 'Wrong username or password!'
+    context['form'] = form
     return render(request, 'socialapp/login.html', context)
 
 
